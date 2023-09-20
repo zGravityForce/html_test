@@ -26,11 +26,17 @@ jobs:
           git checkout gh-pages
         fi
 
+    # - name: Hello world action
+    #   with: # Set the secret as an input
+    #    super_secret: ${{ secrets.SuperSecret }}
+    #   env: # Or as an environment variable
+    #     super_secret: ${{ secrets.SuperSecret }}
+
     - name: Deploy to GitHub Pages
       run: |
         git add .
         git commit -m "Auto-deploy via GitHub Actions"
         git push --force "https://${{ secrets.ACCESS_TOKEN }}@github.com/zGravityForce/html_test.git" gh-pages
-        
+
     # env:
     #     ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
