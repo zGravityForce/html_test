@@ -30,7 +30,7 @@ jobs:
       run: |
         git add .
         git commit -m "Auto-deploy via GitHub Actions"
-        git push --force origin gh-pages
+        git push --force "https://${{ secrets.ACCESS_TOKEN }}@github.com/yourusername/yourrepo.git" gh-pages
     
-    env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    # env:
+    #     ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
