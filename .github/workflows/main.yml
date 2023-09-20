@@ -31,3 +31,6 @@ jobs:
         git add .
         git commit -m "Auto-deploy via GitHub Actions"
         git push --force origin gh-pages
+    
+    env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
