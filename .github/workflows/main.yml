@@ -1,23 +1,21 @@
-# when code is pushed to main, trigger the CI
-name: CI
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
       - main
 
-
 jobs:
-    build-and-deploy:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v3
+  deploy:
+    runs-on: ubuntu-latest
 
-        #https://github.com/JamesIves/github-pages-deploy-action/tree/v4.3.3/
-            - name: Deploy
-              uses: JamesIves/github-pages-deploy-action@v4.3.0
-              with: 
-                branch: main
-                folder: docs
-        
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Deploy to GitHub Pages
+      run: |
+        git checkout -b gh-pages  # 切换到 GitHub Pages 分支
+        git add index.html  # 添加您的静态文件
+        git commit -m "Auto-deploy via GitHub Actions"
+        git push --force origin gh-pages  # 强制推送到 GitHub Pages 分支
