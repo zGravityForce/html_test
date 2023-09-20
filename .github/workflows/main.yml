@@ -18,9 +18,18 @@ jobs:
         git config --global user.email "you@example.com"
         git config --global user.name "Your Name"
 
+    - name: Check if gh-pages branch exists
+      run: |
+        if [ ! `git branch --list gh-pages` ]; then
+          git checkout --orphan gh-pages
+        else
+          git checkout gh-pages
+        fi
+
     - name: Deploy to GitHub Pages
       run: |
-        git checkout -b gh-pages  # 切换到 GitHub Pages 分支
-        git add index.html
+        git rm -rf .  # 清空分支中的旧文件
+        cp path/to/your/index.html .  # 复制新的 index.html 文件或其他文件
+        git add .
         git commit -m "Auto-deploy via GitHub Actions"
-        git push --force origin gh-pages  # 强制推送到 GitHub Pages 分支
+        git push --force origin gh-pages
