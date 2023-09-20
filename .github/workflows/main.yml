@@ -28,8 +28,6 @@ jobs:
 
     - name: Deploy to GitHub Pages
       run: |
-        git rm -rf .  # 清空分支中的旧文件
-        cp path/to/your/index.html .  # 复制新的 index.html 文件或其他文件
         git add .
         git commit -m "Auto-deploy via GitHub Actions"
         git push --force origin gh-pages
