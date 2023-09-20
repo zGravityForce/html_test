@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-    
+
     - name: Set Git user identity
       run: |
         git config --global user.email "you@example.com"
@@ -20,7 +20,7 @@ jobs:
 
     - name: Deploy to GitHub Pages
       run: |
-        git checkout main  # 切换到 GitHub Pages 分支
-        git add index.html  # 添加您的静态文件
+        git checkout -b gh-pages  # 切换到 GitHub Pages 分支
+        git add index.html
         git commit -m "Auto-deploy via GitHub Actions"
-        git push --force origin main  # 强制推送到 GitHub Pages 分支
+        git push --force origin gh-pages  # 强制推送到 GitHub Pages 分支
